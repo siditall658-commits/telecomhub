@@ -28,7 +28,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-interaction --optimize-autoloader --no-dev --no-scripts
 
 # Donner les permissions nécessaires aux dossiers de stockage
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Donner les permissions totales d'écriture au serveur web
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Copier le script de déploiement et lui donner les droits d'exécution
 COPY deploy.sh /usr/local/bin/deploy.sh
