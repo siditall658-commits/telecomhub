@@ -30,4 +30,11 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev --no-script
 # Donner les permissions nécessaires aux dossiers de stockage
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Copier le script de déploiement et lui donner les droits d'exécution
+COPY deploy.sh /usr/local/bin/deploy.sh
+RUN chmod +x /usr/local/bin/deploy.sh
+
 EXPOSE 80
+
+# Lancer le script au démarrage du container
+CMD ["deploy.sh"]
