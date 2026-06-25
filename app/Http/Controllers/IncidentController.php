@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Incidents;
+use App\Models\Incident;
 use App\Models\TelecomService;
 use Illuminate\Http\Request;
 
@@ -20,7 +20,7 @@ class IncidentController extends Controller
             'technicien' => 'nullable|string|max:255',
         ]);
 
-        Incidents::create([
+        Incident::create([
             'telecom_service_id' => $request->telecom_service_id,
             'titre'              => $request->titre,
             'description'        => $request->titre, 
