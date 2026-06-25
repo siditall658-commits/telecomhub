@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
+RUN a2enmod rewrite
+
 # Activer le module Apache Rewrite pour la gestion des routes Laravel
 RUN a2enmod rewrite
 

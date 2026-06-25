@@ -17,5 +17,8 @@ php artisan view:cache
 # 4. Lancer automatiquement les migrations pour créer les tables
 php artisan migrate --force
 
+# Forcer Apache à autoriser les fichiers .htaccess pour Laravel
+sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
 # 5. Démarrer le serveur Apache
 apache2-foreground
