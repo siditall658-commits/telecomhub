@@ -25,7 +25,7 @@ COPY . /var/www/html
 
 # Installer Composer et télécharger les dépendances PHP de Laravel
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+RUN composer install --no-interaction --optimize-autoloader --no-dev --no-scripts
 
 # Donner les permissions nécessaires aux dossiers de stockage
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
